@@ -70,7 +70,7 @@ public class TextureUtil {
             width /= 2;
             Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap, width, height, true);
 
-            bitmap.recycle();
+            //bitmap.recycle();
             bitmap = bitmap2;
         }
     }
@@ -94,7 +94,7 @@ public class TextureUtil {
                 width = FastMath.nearestPowerOfTwo(width);
                 height = FastMath.nearestPowerOfTwo(height);
                 Bitmap bitmap2 = Bitmap.createScaledBitmap(bitmap, width, height, true);
-                bitmap.recycle();
+                //bitmap.recycle();
                 bitmap = bitmap2;
             }
         }

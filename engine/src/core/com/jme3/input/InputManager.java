@@ -204,7 +204,7 @@ public class InputManager implements RawInputListener {
     }
 
     private void invokeUpdateActions() {
-        for (Entry<Long> pressedButton : pressedButtons) {
+      if (pressedButtons.size() > 0) for (Entry<Long> pressedButton : pressedButtons) {
             int hash = pressedButton.getKey();
 
             long pressTime = pressedButton.getValue();
@@ -215,7 +215,7 @@ public class InputManager implements RawInputListener {
             }
         }
 
-        for (Entry<Float> axisValue : axisValues) {
+      if (axisValues.size() > 0) for (Entry<Float> axisValue : axisValues) {
             int hash = axisValue.getKey();
             float value = axisValue.getValue();
             invokeAnalogs(hash, value * frameTPF, true);
@@ -729,6 +729,17 @@ public class InputManager implements RawInputListener {
     public void setSimulateMouse(boolean value) {
         if (touch != null) {
             touch.setSimulateMouse(value);
+        }
+    }
+    /**
+     * Returns state of simulation of mouse events. Used for touchscreen input only.
+     *
+     */
+    public boolean getSimulateMouse() {
+        if (touch != null) {           
+            return touch.getSimulateMouse();
+        } else {
+            return false;
         }
     }
     
